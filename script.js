@@ -107,7 +107,7 @@ function App() {
             systems. I care about clarity, performance, and a UX that feels precise.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href="sidhusahoo2002@gmail.com">Hire Me</a>
+            <a className="btn btn-primary" href="mailto:sidhusahoo2002@gmail.com">Hire Me</a>
             <a className="btn btn-ghost" href="Siddheswar_Sahoo_Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
           </div>
           <div className="card-grid" style={{ marginTop: '28px' }}>
