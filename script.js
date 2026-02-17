@@ -144,7 +144,7 @@ function App() {
               className="github-link"
             >
               <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
                 alt="GitHub Profile"
                 width="28"
                 height="28"
