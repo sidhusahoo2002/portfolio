@@ -141,10 +141,10 @@ function App() {
               href="https://github.com/sidhusahoo2002"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-ghost"
+              className="btn btn-primary"
             >
               <img
-                src="https://cdn.jsdelivr.net/gh///icons/github/github-original-wordmark.svg"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
                 alt="GitHub Profile"
                 width="28"
                 height="28"
