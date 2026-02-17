@@ -144,11 +144,10 @@ function App() {
               className="btn btn-ghost"
             >
               <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
+                src="https://www.google.com/imgres?q=github%20image&imgurl=https%3A%2F%2Fcdn-icons-png.flaticon.com%2F512%2F25%2F25231.png&imgrefurl=https%3A%2F%2Fwww.flaticon.com%2Ffree-icon%2Fgithub-logo_25231&docid=kHlC0fHCgyWhTM&tbnid=Lp2OqU7fPdjSMM&vet=12ahUKEwjskrXJx-CSAxXS8DgGHfqRLAMQM3oECBIQAA..i&w=512&h=512&hcb=2&ved=2ahUKEwjskrXJx-CSAxXS8DgGHfqRLAMQM3oECBIQAA"
                 alt="GitHub Profile"
                 width="28"
                 height="28"
-                color="#fff"
               />
             </a>
           </div>
