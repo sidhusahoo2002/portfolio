@@ -1,18 +1,21 @@
 ﻿const { useEffect, useMemo, useState } = React;
 
 function App() {
-  const [status, setStatus] = useState({ type: 'idle', message: '' });
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState({ type: "idle", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   useEffect(() => {
-    const items = document.querySelectorAll('[data-reveal]');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-        }
-      });
-    }, { threshold: 0.2 });
+    const items = document.querySelectorAll("[data-reveal]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
 
     items.forEach((item) => observer.observe(item));
 
@@ -20,29 +23,36 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const cards = Array.from(document.querySelectorAll('[data-story-card]'));
+    const cards = Array.from(document.querySelectorAll("[data-story-card]"));
     if (!cards.length) return;
 
     const setActive = (index) => {
       cards.forEach((card, i) => {
         if (i === index) {
-          card.classList.add('is-active');
+          card.classList.add("is-active");
         } else {
-          card.classList.remove('is-active');
+          card.classList.remove("is-active");
         }
       });
       const progress = ((index + 1) / cards.length) * 100;
-      document.documentElement.style.setProperty('--story-progress', `${progress}%`);
+      document.documentElement.style.setProperty(
+        "--story-progress",
+        `${progress}%`,
+      );
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const index = Number(entry.target.getAttribute('data-story-card')) || 0;
-          setActive(index);
-        }
-      });
-    }, { threshold: 0.55 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index =
+              Number(entry.target.getAttribute("data-story-card")) || 0;
+            setActive(index);
+          }
+        });
+      },
+      { threshold: 0.55 },
+    );
 
     cards.forEach((card) => observer.observe(card));
     setActive(0);
@@ -50,11 +60,10 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
-  const roles = useMemo(() => [
-    'Full Stack Developer',
-    'HealthTech Builder',
-    'Weather Systems Enthusiast'
-  ], []);
+  const roles = useMemo(
+    () => ["Full Stack Development", "ML Enthusiast", "Software Development"],
+    [],
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -63,24 +72,30 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus({ type: 'loading', message: 'Sending...' });
+    setStatus({ type: "loading", message: "Sending..." });
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form)
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
       });
 
       const data = await response.json();
       if (!response.ok) {
-        throw new Error(data.message || 'Failed to send');
+        throw new Error(data.message || "Failed to send");
       }
 
-      setStatus({ type: 'success', message: 'Message sent. I will get back to you soon.' });
-      setForm({ name: '', email: '', message: '' });
+      setStatus({
+        type: "success",
+        message: "Message sent. I will get back to you soon.",
+      });
+      setForm({ name: "", email: "", message: "" });
     } catch (err) {
-      setStatus({ type: 'error', message: err.message || 'Something went wrong.' });
+      setStatus({
+        type: "error",
+        message: err.message || "Something went wrong.",
+      });
     }
   };
 
@@ -103,28 +118,56 @@ function App() {
         <div>
           <h1>Building intelligent, human-first digital products.</h1>
           <p>
-            I am a student developer focused on practical HealthTech tools and real-time
-            systems. I care about clarity, performance, and a UX that feels precise.
+            I am a student developer focused on practical HealthTech tools and
+            real-time systems. I care about clarity, performance, and a UX that
+            feels precise.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href="mailto:sidhusahoo2002@gmail.com">Hire Me</a>
-            <a className="btn btn-ghost" href="Siddheswar_Sahoo_Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
+            <a
+              className="btn btn-primary"
+              href="mailto:sidhusahoo2002@gmail.com"
+            >
+              Hire Me
+            </a>
+            <a
+              className="btn btn-ghost"
+              href="Siddheswar_Sahoo_Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Download Resume
+            </a>
+            <a
+              href="https://github.com/sidhusahoo2002"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="github-link"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                alt="GitHub Profile"
+                width="28"
+                height="28"
+              />
+            </a>
           </div>
-          <div className="card-grid" style={{ marginTop: '28px' }}>
+          <div className="card-grid" style={{ marginTop: "28px" }}>
             {roles.map((role) => (
               <div className="card reveal" data-reveal key={role}>
                 <span className="tag">Focus</span>
                 <h3>{role}</h3>
-                <p>Shipping projects with fast iterations and clean engineering.</p>
+                <p>
+                  Shipping projects with fast iterations and clean engineering.
+                </p>
               </div>
             ))}
           </div>
         </div>
         <div className="hero-card reveal" data-reveal>
           <img src="profile.jpg" alt="Siddheswar Sahoo" />
-          <div style={{ marginTop: '16px' }}>
+          <div style={{ marginTop: "16px" }}>
             <h3 style={{ margin: 0 }}>Currently open to:</h3>
-            <p style={{ color: 'var(--muted)' }}>
+            <p style={{ color: "var(--muted)" }}>
               Internship roles, freelance builds, and product prototypes.
             </p>
           </div>
@@ -136,8 +179,9 @@ function App() {
           <div>
             <h2>About</h2>
             <p>
-              I design and build web applications with a strong backend foundation.
-              My projects blend data, UX, and practical system thinking.
+              I design and build web applications with a strong backend
+              foundation. My projects blend data, UX, and practical system
+              thinking.
             </p>
           </div>
           <div className="list reveal" data-reveal>
@@ -172,21 +216,24 @@ function App() {
             </div>
           </div>
 
-            {/* New Project Add */}
-            <div className="story-cards">
-              <div className="story-card" data-story-card="0">
-                <h4>Lung Cancer Diagonosis</h4>
-                <p>Lung Cancer Diagonosis from Medical Images</p>
-                <a href="https://lungcareai.streamlit.app/">Live Link</a>
-                <div className="story-meta">
-                  <span>Challenge: fast triage UX</span>
-                  <span>Outcome: real-time decision flow</span>
-                </div>
+          {/* New Project Add */}
+          <div className="story-cards">
+            <div className="story-card" data-story-card="0">
+              <h4>Lung Cancer Diagonosis</h4>
+              <p>Lung Cancer Diagonosis from Medical Images</p>
+              <a href="https://lungcareai.streamlit.app/">Live Link</a>
+              <div className="story-meta">
+                <span>Challenge: fast triage UX</span>
+                <span>Outcome: real-time decision flow</span>
               </div>
+            </div>
             <div className="story-cards">
               <div className="story-card" data-story-card="0">
                 <h4>HealthTech Primary Diagnosis</h4>
-                <p>Symptom-based diagnostic assistant with doctor recommendations.</p>
+                <p>
+                  Symptom-based diagnostic assistant with doctor
+                  recommendations.
+                </p>
                 <div className="story-meta">
                   <span>Challenge: fast triage UX</span>
                   <span>Outcome: real-time decision flow</span>
@@ -202,7 +249,9 @@ function App() {
               </div>
               <div className="story-card" data-story-card="2">
                 <h4>Portfolio 2.0</h4>
-                <p>Modern UI and full-stack contact flow with email delivery.</p>
+                <p>
+                  Modern UI and full-stack contact flow with email delivery.
+                </p>
                 <div className="story-meta">
                   <span>Challenge: brand clarity</span>
                   <span>Outcome: premium perception</span>
@@ -276,12 +325,21 @@ function App() {
       </section> */}
 
       <footer className="footer">
-        <div>LinkedIn: <a href="https://www.linkedin.com/in/siddheswar-sahoo-54ba0a271/" target="_blank" rel="noreferrer">Siddheswar Sahoo</a></div>
+        <div>
+          LinkedIn:{" "}
+          <a
+            href="https://www.linkedin.com/in/siddheswar-sahoo-54ba0a271/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Siddheswar Sahoo
+          </a>
+        </div>
         <div>© 2026 Siddheswar Sahoo. All rights reserved.</div>
       </footer>
     </div>
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
