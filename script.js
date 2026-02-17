@@ -141,7 +141,7 @@ function App() {
               href="https://github.com/sidhusahoo2002"
               target="_blank"
               rel="noopener noreferrer"
-              className="github-link"
+              className="btn btn-ghost"
             >
               <img
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
