@@ -148,6 +148,7 @@ function App() {
                 alt="GitHub Profile"
                 width="28"
                 height="28"
+                color="#fff"
               />
             </a>
           </div>
