@@ -170,6 +170,19 @@ function App() {
               </div>
               <div className="story-tag">Live progress</div>
             </div>
+          </div>
+
+            {/* New Project Add */}
+            <div className="story-cards">
+              <div className="story-card" data-story-card="0">
+                <h4>Lung Cancer Diagonosis</h4>
+                <p>Lung Cancer Diagonosis from Medical Images</p>
+                <a href="https://lungcareai.streamlit.app/">Live Link</a>
+                <div className="story-meta">
+                  <span>Challenge: fast triage UX</span>
+                  <span>Outcome: real-time decision flow</span>
+                </div>
+              </div>
             <div className="story-cards">
               <div className="story-card" data-story-card="0">
                 <h4>HealthTech Primary Diagnosis</h4>
